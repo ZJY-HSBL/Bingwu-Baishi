@@ -1,0 +1,34 @@
+@charset "UTF-8";
+:root{color-scheme:light;--ink:#292b2a;--muted:#796c59;--red:#a74837;--paper:#fffaf0;--line:#d9cbb2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:#e9e2d6;font:17px/1.95 "Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif}
+a{color:#7f3a2e;text-decoration:none}a:hover{text-decoration:underline}
+.site{max-width:1320px;margin:0 auto;padding:20px}
+.masthead{text-align:center;padding:32px 8px 24px;border-bottom:2px solid #a78969;margin-bottom:24px}
+.site-title{font-weight:800;letter-spacing:.22em;font-size:clamp(32px,5vw,54px);color:#2d302f}
+.masthead p{margin:8px 0 0;color:var(--muted);letter-spacing:.12em;font-size:15px}
+.frame{display:grid;grid-template-columns:245px minmax(0,1fr);gap:20px;align-items:start}
+.sidebar{position:sticky;top:16px;padding:26px 20px;background:#f8f1e6;border:1px solid #dbcfb8;border-radius:4px}
+.aside-title{letter-spacing:.2em;color:#79513e;font-weight:700;margin-bottom:12px}
+.sidebar nav{display:flex;flex-direction:column;gap:5px}
+.sidebar nav a{display:flex;align-items:center;gap:12px;padding:5px 7px;border-radius:3px;color:#39342c;font-size:15px}
+.sidebar nav a:hover{background:#efe0c9;text-decoration:none}
+.sidebar nav span{color:#897f70;font-size:13px}.sidebar nav b{font-size:18px}
+.sidebar-note{font-size:12px;line-height:1.8;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+.paper{padding:54px clamp(24px,6vw,76px);background:var(--paper);box-shadow:0 5px 26px #3f301515;border:1px solid #dbcdb5;min-width:0}
+.paper h1,.paper h2{font-weight:700;text-align:center;letter-spacing:.14em;color:#292825}
+.paper h1{font-size:clamp(30px,4vw,44px);margin:0 0 30px}
+.paper h2{font-size:clamp(22px,3vw,28px);margin:44px 0 25px}
+.paper h2:after{content:"";display:block;width:54px;height:2px;background:var(--red);margin:14px auto 0}
+.paper p{margin:1.15em 0;text-align:justify}
+.paper blockquote{margin:1.15em 0 1.7em;padding:14px 21px;color:#484139;background:#f6eee1;border-left:3px solid #b07e68;font-size:16px}
+.paper blockquote p{margin:.4em 0}
+.paper strong{color:#483225}
+.paper hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+.paper table{width:100%;border-collapse:collapse;font-size:15px}
+.paper th,.paper td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+.lead{text-align:center;color:#825d44;font-size:21px;letter-spacing:.06em;padding-bottom:24px}
+.footnote{margin-top:50px;color:var(--muted);font-size:14px;text-align:center}
+.paper code{overflow-wrap:anywhere;font-size:.85em}
+footer{text-align:center;padding:28px;color:#817767;font-size:13px}
+@media(max-width:780px){.site{padding:8px}.masthead{padding:20px 8px}.frame{grid-template-columns:1fr;gap:10px}.sidebar{position:static;padding:15px}.sidebar nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}.sidebar nav a{padding:5px;font-size:13px}.sidebar nav span{display:none}.sidebar-note{font-size:11px;margin-top:12px;padding-top:10px}.paper{padding:28px 18px}body{font-size:16px}.paper blockquote{padding:11px 13px;font-size:15px}.paper table{font-size:13px}.paper td,.paper th{padding:6px}}
