@@ -47,3 +47,12 @@ https://zjy-hsbl.github.io/Bingwu-Baishi/
 - [Issues](https://github.com/ZJY-HSBL/Bingwu-Baishi/issues) — 反馈讹误、补充出处或提交修订建议
 
 文本编纂：海生不浪。第三方网络引文的著作权归其原作者或合法权利人所有；本仓库不对所引内容主张原创权利。
+
+## 古典藏书版 · XeLaTeX
+
+- [完整 LaTeX 排版工程](latex/README.md)
+- [主控源码](latex/main.tex)
+- [九卷排版源码](latex/chapters/)
+- [PDF 阅读版（A5 · 65页）](latex/%E4%B8%99%E5%8D%88%E7%A8%97%E5%8F%B2_%E5%8F%A4%E5%85%B8%E8%97%8F%E4%B9%A6%E7%89%88.pdf)
+
+PDF 与封面素材均已纳入版本库，可从 `latex/` 目录直接阅读或使用 XeLaTeX 重新编译。

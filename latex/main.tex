@@ -1,0 +1,126 @@
+% !TEX program = xelatex
+% 丙午稗史 / Bingwu Baishi - Classic literary edition
+% Compile: latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
+\documentclass[UTF8,11pt,twoside,openright,fontset=none]{ctexbook}
+\usepackage[a5paper,inner=22mm,outer=19mm,top=22mm,bottom=22mm,headheight=16pt,headsep=7mm,footskip=12mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeXGyrePagella}
+\setCJKmainfont[AutoFakeBold=2]{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+\newCJKfontfamily\headfont[AutoFakeBold=2]{Noto Serif CJK SC}
+\newCJKfontfamily\titlefont[AutoFakeBold=3]{Noto Serif CJK SC}
+\newfontfamily\symbolsfont{DejaVu Sans}
+\newfontfamily\javanesefont{Noto Sans Javanese}
+\usepackage{tikz}
+\usetikzlibrary{calc,decorations.pathmorphing}
+\usepackage{xcolor}
+\definecolor{navy}{HTML}{101C27}
+\definecolor{bookgold}{HTML}{E4C88B}
+\definecolor{oldgold}{HTML}{A68550}
+\definecolor{wine}{HTML}{823F38}
+\definecolor{ink}{HTML}{252A29}
+\definecolor{muted}{HTML}{736D62}
+\definecolor{quoteedge}{HTML}{B6A48B}
+\definecolor{quoteivory}{HTML}{FAF8F3}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{needspace}
+\usepackage{mdframed}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\hypersetup{unicode=true,pdfauthor={海生不浪},pdftitle={丙午稗史},pdfsubject={网络伪史异说汇编与辨析},colorlinks=true,linkcolor=wine,urlcolor=wine,bookmarksopen=true,bookmarksnumbered=false}
+\setcounter{tocdepth}{0}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\linespread{1.45}
+\setlength{\emergencystretch}{3em}
+\sloppy
+\renewcommand{\contentsname}{卷目}
+\renewcommand{\cftchapfont}{\normalfont\headfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftchapleader}{\cftdotfill{1.5}}
+\setlength{\cftbeforechapskip}{10pt}
+\fancyhf{}
+\fancyhead[LE]{\footnotesize\headfont\color{muted}丙午稗史}
+\fancyhead[RO]{\footnotesize\headfont\color{muted}\leftmark}
+\fancyfoot[LE,RO]{\color{wine}\thepage}
+\renewcommand{\headrulewidth}{.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\color{wine}\thepage}\renewcommand{\headrulewidth}{0pt}}
+\newcommand{\ornament}{\tikz[baseline=-0.6ex]{\draw[oldgold,line width=.5pt](-1.7,0)--(-.3,0);\fill[oldgold] (0,0) --(.13,.13)--(.26,0)--(.13,-.13)--cycle;\draw[oldgold,line width=.5pt](.42,0)--(1.82,0);}}
+% front/back sections
+\newcommand{\BookPart}[1]{%
+ \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{#1}\markboth{#1}{#1}%
+ \thispagestyle{plain}%
+ \begin{center}\vspace*{10mm}{\fontsize{26}{38}\titlefont\color{ink}#1}\par\vspace{5mm}\ornament\end{center}\vspace{10mm}%
+}
+% Each volume begins on an individually typeset recto opener.
+\newcommand{\BookVolume}[3]{%
+ \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{卷之#1·#2}\markboth{卷之#1·#2}{卷之#1·#2}%
+ \thispagestyle{empty}\null\vspace*{25mm}%
+ \begin{center}
+ {\color{oldgold}\headfont\Large 卷之#1}\par
+ \vspace{18mm}
+ {\titlefont\fontsize{82}{90}\selectfont\color{ink}#2}\par
+ \vspace{13mm}\ornament\par
+ \vspace{12mm}{\color{muted}\small #3}\par
+ \end{center}
+ \vfill
+ \begin{center}{\scriptsize\color{muted}丙午岁\quad 九卷汇编}\end{center}
+ \clearpage
+}
+% Paragraph-long primary quotations are breakable across pages
+\newenvironment{sourcequote}{%
+\begin{mdframed}[linecolor=quoteedge,linewidth=.7pt,topline=false,rightline=false,bottomline=false,backgroundcolor=quoteivory,skipabove=5pt,skipbelow=11pt,innerleftmargin=10pt,innerrightmargin=7pt,innertopmargin=7pt,innerbottommargin=7pt,splittopskip=8pt,splitbottomskip=8pt]%
+\begingroup\fontsize{10.5pt}{17pt}\selectfont\color{ink}\parindent=1.6em
+}{\par\endgroup\end{mdframed}}
+\newcommand{\SourceEntry}[3]{%
+\par\Needspace{5\baselineskip}\vspace{8pt}%
+\noindent\textcolor{wine}{\headfont\large #1}\hspace{1.1em}{\headfont\small #2}\par\nobreak\vspace{2pt}%
+\begin{sourcequote}#3\end{sourcequote}
+}
+\newenvironment{verseblock}{\begin{center}\fontsize{12}{23}\selectfont\headfont\color{wine}}{\end{center}}
+\begin{document}
+\pagenumbering{gobble}
+% Jacket-style front cover: image is original project artwork; title is selectable text.
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+ \node[anchor=center,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{assets/cover-art.jpg}};
+ \node[anchor=north,text=bookgold] at ([yshift=-64mm]current page.north){\titlefont\fontsize{39}{52}\selectfont 丙午稗史};
+ \node[anchor=north,text=bookgold] at ([yshift=-94mm]current page.north){\headfont\fontsize{11}{18}\selectfont 网 络 异 闻 · 丙 午 初 编};
+ \node[anchor=north,text=bookgold] at ([yshift=-120mm]current page.north){\headfont\fontsize{12}{18}\selectfont 海生不浪\quad 编};
+\end{tikzpicture}
+\end{titlepage}
+\input{chapters/00-title-pages.tex}
+\frontmatter
+\pdfbookmark[0]{卷目}{book-toc}
+\tableofcontents
+\cleardoublepage
+\input{chapters/00-preface.tex}
+\input{chapters/00-conventions.tex}
+\mainmatter
+\input{chapters/01-yi.tex}
+\input{chapters/02-yu.tex}
+\input{chapters/03-ji.tex}
+\input{chapters/04-jie.tex}
+\input{chapters/05-chen.tex}
+\input{chapters/06-hai.tex}
+\input{chapters/07-ying.tex}
+\input{chapters/08-sui.tex}
+\input{chapters/09-ji.tex}
+\backmatter
+\input{chapters/99-epilogue.tex}
+\cleardoublepage
+\thispagestyle{empty}\null\vfill
+\begin{center}{\color{wine}\ornament}\par\vspace{10mm}
+{\large 不以众口为信史，不以己见为圭臬。}\par
+\vspace{7mm}
+{\small\color{muted}偶有所感，随笔成篇；集腋成裘，聊备一编。}
+\end{center}\vfill
+\end{document}
